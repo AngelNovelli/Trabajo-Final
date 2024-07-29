@@ -1,4 +1,4 @@
-div{
+div.productos{
     display:flex;
     flex-wrap: nowrap;
 }
@@ -52,5 +52,79 @@ a.productos:hover{
 }
 
 a.productos:visited{
+    color:white;
+}
+
+div.contenedor{
+    height: 500px;
+}
+
+input.comprar{
+    margin-top: 10px;
+    margin-left: 25px;
+    height: 25px;
+}
+
+button.comprar{
+    margin-top: 10px;
+    height: 32px;
+    margin-right: 25px;
+}
+
+/*Comienzo a trabajar con el footer:*/
+
+footer {
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
+        height: 200px;
+        width: 1900px;
+        background-color: #A63C3C;
+    
+}
+
+div.texto{
+    color:white;
+}
+
+div.logo{
+    background-color: white;
+    height: 110px;
+    width: 115px;
+    display: flex;
+    align-items: center;
+justify-content: center;
+border-radius: 10px;
+}
+
+#at{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color:#A63C3C;
+font-size: 425%;
+
+}
+
+nav.navfooter{
+    display: flex;
+    flex-direction: column;
+
+}
+
+div a.productosf{
+    display: flex;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+a.productosf:link{
+    color:white;
+}
+a.productosf:hover{
+    color:rgb(255, 38, 0);
+    text-decoration: underline;
+}
+
+a.productosf:visited{
     color:white;
 }

@@ -55,36 +55,67 @@ function pintarProductos2(productos2) {
     for (let i = 0; i < productos2.length; i++) {
         let lista = document.getElementById("lista");
         lista.innerHTML += `<li class="tamaño">
-            Producto: ${productos2[i].nombre} - Precio: $${productos2[i].precio} (${productos2[i].stock})
+            Producto: ${productos2[i].nombre} - Precio: $${productos2[i].precio} (<span id="stock${i}">${productos2[i].stock}</span>)
             <input class="comprar" type="number" id="entrada${i}" placeholder="Ingrese cantidad" min="0">
-            <button class="comprar" id="btn${i} type="button"> Comprar </button>
+            <button class="comprar" id="btn${i}" type="button"> Comprar </button> 
+            <p id="total${i}"> Total: $ </p>
 </li>`
     }
-
 }
+
 
 pintarProductos2(productos2);
 
-function comprar(productos2) {
-    const stockHTML = document.getElementById(`stock${productos2}`);
-    const entradaHTML = document.getElementById(`entrada${productos2}`);
-    const stock = parseInt(stockHTML.value);
+function comprar(i,productos2) {
+    const stockHTML = document.getElementById(`stock${i}`);
+    const entradaHTML = document.getElementById(`entrada${i}`);
+    const stock = parseInt(stockHTML.textContent);
     const cantidad = parseInt(entradaHTML.value);
 
     if (cantidad > 0 && cantidad <= stock) {
-        stockHTML.value = stock - cantidad;
+        stockHTML.textContent = stock - cantidad;
         entradaHTML.value = "";
+
         alert(`Comprado exitosamente`);
     } else {
-        alert(`cantidad no valida`);
+        alert(`No hay stock suficietne, ingrese una cantidad valida`);
+    }
+
+    if (!isNaN(cantidad) && cantidad > 0) {
+        console.log(productos2[i].precio);
+        const multiplicacion = cantidad * productos2[i].precio;
+        console.log(multiplicacion);
+        const totalHTML = document.getElementById(`total${i}`);
+        const totalAnterior = parseFloat(totalHTML.textContent.replace('$', '')) || 0;
+
+        const nuevoTotal = totalAnterior + multiplicacion;
+        totalHTML.textContent = `$${nuevoTotal.toFixed(2)}`;
+    } else {
+        alert('Error: Ingrese una cantidad válida mayor que cero.');
     }
 }
 
+
+
 for (let i = 0; i < productos2.length; i++) {
-    document.getElementById(`btn${i}`).addEventListener("click", () => {
-        comprar(i);
-    })
+    document.getElementById(`btn${i}`).addEventListener(`click`, () => {
+        comprar(i,productos2);
+    });
 }
+
+/*function comprar(cantidad) {
+    document.getElementById("total${i}").innerHTML = cantidad * productos2[i].precio;
+    console.log(cantidad * productos2[i].precio);
+}
+
+document.querySelector("div button").addEventListener("click", () => {
+    let cant = document.querySelector("div input").value;
+    cant = Number(cant)
+    if (cant > 0 && productos[0].stock - cant > 0) {
+        comprar(cant);
+    }
+}
+) */
 
 /*let nombre = document.querySelector("p[name=nombre]")
 let precio = document.querySelector("p[name=precio]")
@@ -94,6 +125,11 @@ nombre.innerHTML = productos[0].nombre;
 precio.innerHTML = productos[0].precio;
 stock.innerHTML = productos[0].stock;
 
+function comprar(cant) {
+    document.getElementById("total").innerHTML = cant * productos[0].precio;
+    console.log(cant * productos[0].precio);
+}
+
 document.querySelector("div button").addEventListener("click", () => {
     let cant = document.querySelector("div input").value;
     cant = Number(cant)
@@ -102,11 +138,6 @@ document.querySelector("div button").addEventListener("click", () => {
     }
 }
 )
-
-function comprar(cant) {
-    document.getElementById("total").innerHTML = cant * productos[0].precio;
-    console.log(cant * productos[0].precio);
-}
 */
 
 /*

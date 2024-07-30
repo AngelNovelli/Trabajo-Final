@@ -56,8 +56,8 @@ function pintarProductos2(productos2) {
         let lista = document.getElementById("lista");
         lista.innerHTML += `<li class="tamaño">
             Producto: ${productos2[i].nombre} - Precio: $${productos2[i].precio} (${productos2[i].stock})
-            <input type="number" id="entrada${i}" placeholder="Ingrese cantidad" min="0">
-            <button id="btn${i} type="button"> Comprar </button>
+            <input class="comprar" type="number" id="entrada${i}" placeholder="Ingrese cantidad" min="0">
+            <button class="comprar" id="btn${i} type="button"> Comprar </button>
 </li>`
     }
 

@@ -54,12 +54,16 @@ const productos2 = [{
 function pintarProductos2(productos2) {
     for (let i = 0; i < productos2.length; i++) {
         let lista = document.getElementById("lista");
+        let sumaTotal = document.getElementById("sumaTotal");
         lista.innerHTML += `<li class="tamaño">
             Producto: ${productos2[i].nombre} - Precio: $${productos2[i].precio} (<span id="stock${i}">${productos2[i].stock}</span>)
             <input class="comprar" type="number" id="entrada${i}" placeholder="Ingrese cantidad" min="0">
             <button class="comprar" id="btn${i}" type="button"> Comprar </button> 
             <p id="total${i}"> Total: $ </p>
 </li>`
+        sumaTotal.innerHTML = `<div id="sumaTotal">
+Total: $
+</div>`
     }
 }
 
@@ -78,16 +82,13 @@ function comprar(i,productos2) {
 
         alert(`Comprado exitosamente`);
     } else {
-        alert(`No hay stock suficietne, ingrese una cantidad valida`);
+        alert(`No hay stock suficiente, ingrese una cantidad valida`);
     }
 
     if (!isNaN(cantidad) && cantidad > 0) {
-        console.log(productos2[i].precio);
         const multiplicacion = cantidad * productos2[i].precio;
-        console.log(multiplicacion);
         const totalHTML = document.getElementById(`total${i}`);
         const totalAnterior = parseFloat(totalHTML.textContent.replace('$', '')) || 0;
-
         const nuevoTotal = totalAnterior + multiplicacion;
         totalHTML.textContent = `$${nuevoTotal.toFixed(2)}`;
     } else {
@@ -95,13 +96,28 @@ function comprar(i,productos2) {
     }
 }
 
-
-
 for (let i = 0; i < productos2.length; i++) {
     document.getElementById(`btn${i}`).addEventListener(`click`, () => {
         comprar(i,productos2);
     });
 }
+
+function sumarTotales(productos2) {
+    let totalGeneral = 0;
+
+    for (let i = 0; i < productos2.length; i++) {
+        const totalHTML = document.getElementById(`total${i}`);
+        const totalAnterior = parseFloat(totalHTML.textContent.replace('$', '')) || 0;
+
+        totalGeneral += totalAnterior;
+    }
+
+    return totalGeneral.toFixed(2);
+}
+
+// Llamada a la función para obtener el total general
+const totalGeneral = sumarTotales(productos2);
+console.log(`Total general: $${totalGeneral}`);
 
 /*function comprar(cantidad) {
     document.getElementById("total${i}").innerHTML = cantidad * productos2[i].precio;

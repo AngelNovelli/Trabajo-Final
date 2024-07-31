@@ -12,30 +12,39 @@ header{
 }
 
 nav{  
-    display:flex;   
-    justify-content: space-around;
-    align-items: center;
-   
+display: flex;
+align-items: center;
+    
 }
 
+div.logoh{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 100px;
+    width: 95px;
+}   
+
 div.tres{
+    display: flex;
+    justify-content: center;
+  
+}
+
+a.productos{ 
+    background-color: #732626;
     height: 30px;
     width: 150px;
     border: 3px solid black;
     color:white;
+    text-decoration: none;
     font-size:85%;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    background-color: #732626;
-}
-
-div a.productos{
-        color: white;
-        text-decoration: none;
-        
+    margin: 0 200px;
 }
 
 a.productos:link{
@@ -44,6 +53,7 @@ a.productos:link{
 
 a.productos:hover{
     color:rgb(255, 38, 0);
+    text-decoration: underline;
 }
 
 a.productos:visited{

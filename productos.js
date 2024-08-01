@@ -53,27 +53,26 @@ const productos2 = [{
 
 function pintarProductos2(productos2) {
     for (let i = 0; i < productos2.length; i++) {
-        let lista = document.getElementById("lista");
+        let lista = document.getElementById("lista"); //selecciona un elemento del documento por medio del valor del atributo id que se le haya asignado.
         let sumaTotal = document.getElementById("sumaTotal");
         lista.innerHTML += `<li class="tamaño">
             Producto: ${productos2[i].nombre} - Precio: $${productos2[i].precio} (<span id="stock${i}">${productos2[i].stock}</span>)
             <input class="comprar" type="number" id="entrada${i}" placeholder="Ingrese cantidad" min="0">
-            <button class="comprar" id="btn${i}" type="button"> Comprar </button> 
-            <p id="total${i}"> Total: $ </p>
+            <button class="comprar" id="btn${i}" type="button"> Comprar </button>
+            Total: <p id="total${i}">  </p>
 </li>`
         sumaTotal.innerHTML = `<div id="sumaTotal">
-Total: $
+Total: $ 
 </div>`
     }
 }
-
 
 pintarProductos2(productos2);
 
 function comprar(i,productos2) {
     const stockHTML = document.getElementById(`stock${i}`);
     const entradaHTML = document.getElementById(`entrada${i}`);
-    const stock = parseInt(stockHTML.textContent);
+    const stock = parseInt(stockHTML.textContent); //Convierte (parsea) un argumento de tipo cadena y devuelve un entero de la base especificada.
     const cantidad = parseInt(entradaHTML.value);
 
     if (cantidad > 0 && cantidad <= stock) {
@@ -85,14 +84,21 @@ function comprar(i,productos2) {
         alert(`No hay stock suficiente, ingrese una cantidad valida`);
     }
 
-    if (!isNaN(cantidad) && cantidad > 0) {
+    if (!isNaN(cantidad) && cantidad > 0 && cantidad <= stock) {
         const multiplicacion = cantidad * productos2[i].precio;
         const totalHTML = document.getElementById(`total${i}`);
-        const totalAnterior = parseFloat(totalHTML.textContent.replace('$', '')) || 0;
+        const totalAnterior = parseFloat(totalHTML.textContent.replace('$', '')) || 0; //La función parseFloat() analiza un argumento (si es necesario, lo convierte en una cadena) y devuelve un número de coma flotante
         const nuevoTotal = totalAnterior + multiplicacion;
-        totalHTML.textContent = `$${nuevoTotal.toFixed(2)}`;
+        totalHTML.textContent = ` $${nuevoTotal.toFixed(2)}`;
+        let totalGeneral = 0;
+        for (let j = 0; j < productos2.length; j++) {
+            const subtotal = parseFloat(document.getElementById(`total${j}`).textContent.replace('$', '')) || 0;
+            totalGeneral += subtotal;
+        }
+        document.getElementById("sumaTotal").textContent = ` Total: $${totalGeneral.toFixed(2)}`;
+        console.log(totalGeneral);
     } else {
-        alert('Error: Ingrese una cantidad válida mayor que cero.');
+        alert('Ingrese una cantidad válida mayor que cero.');
     }
 }
 
@@ -102,22 +108,85 @@ for (let i = 0; i < productos2.length; i++) {
     });
 }
 
-function sumarTotales(productos2) {
-    let totalGeneral = 0;
+const cartas = [{
+    nombre: "Monitor 144Hz",
+    precio: 650000,
+    img: "./imgs/1585891907_monitor_24_led_viewsonic_vx2458_mhd_144hz.png",
+},
+{
+    nombre: "Microfono Red Dragon",
+    precio: 85000,
+    img: "./imgs/microfono.png",
+},
+{
+    nombre: "Mouse Logitech g203",
+    precio: 34000,
+    img: "./imgs/mouse.png",
+},
+{
+    nombre: "Teclado Red Dragon",
+    precio: 62000,
+    img: "./imgs/teclado.png",
+},
+{
+    nombre: "Silla Gamer AFA",
+    precio: 100000,
+    img: "./imgs/8855ecbe32d6455eaa309f783840f0e8.webp",
+},
+{
+    nombre: "Auricular Logitech g435",
+    precio: 140000,
+    img: "./imgs/auricular.png",
+},
+{
+    nombre: "Tiras led 5m",
+    precio: 9000,
+    img: "./imgs/led.png",
+},
+{
+    nombre: "Joystick ps4",
+    precio: 65000,
+    img: "./imgs/joystick.png",
+},
+{
+    nombre: "Pad Redragon",
+    precio: 10000,
+    img: "./imgs/pad.png",
+},
+{
+    nombre: "Camara c922",
+    precio: 130000,
+    img: "./imgs/camara.png",
+}
+]
 
-    for (let i = 0; i < productos2.length; i++) {
-        const totalHTML = document.getElementById(`total${i}`);
-        const totalAnterior = parseFloat(totalHTML.textContent.replace('$', '')) || 0;
+function cards(cartas) {
+    for (let i = 0; i < 5; i++) {
+        let card = document.getElementById("card");
+        card.innerHTML += `<div class="card">
+        <div class="cuadradoBlanco">
+        <img class="imgProducto" src="${cartas[i].img}" alt="${cartas[i].nombre}" >
+        </div>
+    </div>`
 
-        totalGeneral += totalAnterior;
     }
-
-    return totalGeneral.toFixed(2);
 }
 
-// Llamada a la función para obtener el total general
-const totalGeneral = sumarTotales(productos2);
-console.log(`Total general: $${totalGeneral}`);
+cards(cartas);
+
+function cards2(cartas) {
+    for (let i = 5; i < 10; i++) {
+        let card2 = document.getElementById("card2");
+        card2.innerHTML += `<div class="card">
+        <div class="cuadradoBlanco">
+        <img class="imgProducto" src="${cartas[i].img}" alt="${cartas[i].nombre}" >
+        </div>
+    </div>`
+
+    }
+}
+
+cards2(cartas);
 
 /*function comprar(cantidad) {
     document.getElementById("total${i}").innerHTML = cantidad * productos2[i].precio;

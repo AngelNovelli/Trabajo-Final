@@ -91,11 +91,10 @@ div.cuadradoBlanco{
     align-items: center;
 }
 
-div.imgProducto{
+img.imgProducto{
     object-fit: fill;
-    width: 125%;
+    width: 100%;    
     height: 80%;
-
 }
 
 div.texto{
@@ -115,10 +114,15 @@ p.PrecioProducto{
     align-items: center;
 }
 
+/* historia */
+
 div.historia{
     margin-top: 15px;
     display: flex;
 height: 500px;
+display: flex;
+justify-content: space-around;
+align-items: center;
 }
 
 div.cardDescuento{
@@ -128,7 +132,6 @@ div.cardDescuento{
     border-radius: 10px;
     margin-left: 20px;
 }
-
 
 div.cuadradoBlancoDescuento{
     height: 290px;
@@ -153,6 +156,19 @@ font-weight:1000;
 
 marquee.promo{
     color:rgb(218, 152, 31);
+}
+
+p.dni{
+   margin-top: 100px;
+   text-align: center;
+}
+
+marquee#f{
+    margin-top: 95px;
+}
+
+div.enorme{
+    display: flex;
 }
 
 /*Comienzo a trabajar con el footer:*/

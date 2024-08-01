@@ -60,10 +60,14 @@ a.productos:visited{
     color:white;
 }
 
+div.contenido{
+margin-left: 25px;
+}
+
 form{
     display: flex;
-  flex-direction: column;
-  height: 500px;
+  flex-direction: column;   
+  height: 542px;
   width: 250px;
 margin-left: 15px;
 }

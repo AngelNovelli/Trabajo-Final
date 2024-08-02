@@ -160,7 +160,9 @@ marquee.promo{
 
 p.dni{
    margin-top: 100px;
+   display: flex;
    text-align: center;
+   justify-content: center;
 }
 
 marquee#f{
@@ -170,6 +172,22 @@ marquee#f{
 div.enorme{
     display: flex;
 }
+
+h1.titulo{
+    color:rgb(218, 152, 31);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p.parrafo{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    line-height: 1.25;
+    text-align: center;
+}
+
 
 /*Comienzo a trabajar con el footer:*/
 

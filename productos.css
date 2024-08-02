@@ -77,6 +77,11 @@ button.comprar{
     height: 32px;
     margin-right: 25px;
     background-color: #A63C3C;
+    
+}
+
+button.comprar:hover{
+    text-decoration: underline;
 }
 
 /*contenedor*/

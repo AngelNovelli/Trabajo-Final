@@ -57,7 +57,6 @@ a.productos:link{
 }
 
 a.productos:hover{
-    color:rgb(255, 38, 0);
     text-decoration: underline;
 }
 
@@ -230,7 +229,6 @@ a.productosf:link{
     color:white;
 }
 a.productosf:hover{
-    color:#A63C3C;
     text-decoration: underline;
 }
 

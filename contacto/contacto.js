@@ -13,7 +13,11 @@ btnEnviar.addEventListener("click", (e) => {
     informacion[2] = email.value;
     informacion[3] = tel.value;
     informacion[4] = mensaje.value;
-    
+
+    if (nombre.value.trim() === "" || apellido.value.trim() === "" || email.value.trim() === "" || tel.value.trim() === "") {
+        alert("Por favor, completa todos los campos.");
+        return; // Detiene el envío del formulario
+    }
 
     console.log(`Su nombre es ${informacion[0]} y su apellido es ${informacion[1]}, ${informacion[2]},${informacion[3]}, ${informacion[4]}`);
 

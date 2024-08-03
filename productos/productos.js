@@ -111,52 +111,52 @@ for (let i = 0; i < productos2.length; i++) {
 const cartas = [{
     nombre: "Monitor 144Hz",
     precio: 650000,
-    img: "./imgs/1585891907_monitor_24_led_viewsonic_vx2458_mhd_144hz.png",
+    img: "../imgs/1585891907_monitor_24_led_viewsonic_vx2458_mhd_144hz.png",
 },
 {
     nombre: "Microfono Red Dragon",
     precio: 85000,
-    img: "./imgs/microfono.png",
+    img: "../imgs/microfono.png",
 },
 {
     nombre: "Mouse Logitech g203",
     precio: 34000,
-    img: "./imgs/mouse.png",
+    img: "../imgs/mouse.png",
 },
 {
     nombre: "Teclado Red Dragon",
     precio: 62000,
-    img: "./imgs/teclado.png",
+    img: "../imgs/teclado.png",
 },
 {
     nombre: "Silla Gamer AFA",
     precio: 100000,
-    img: "./imgs/8855ecbe32d6455eaa309f783840f0e8.webp",
+    img: "../imgs/8855ecbe32d6455eaa309f783840f0e8.webp",
 },
 {
     nombre: "Auricular Logitech g435",
     precio: 140000,
-    img: "./imgs/auricular.png",
+    img: "../imgs/auricular.png",
 },
 {
     nombre: "Tiras led 5m",
     precio: 9000,
-    img: "./imgs/led.png",
+    img: "../imgs/led.png",
 },
 {
     nombre: "Joystick ps4",
     precio: 65000,
-    img: "./imgs/joystick.png",
+    img: "../imgs/joystick.png",
 },
 {
     nombre: "Pad Redragon",
     precio: 10000,
-    img: "./imgs/pad.png",
+    img: "../imgs/pad.png",
 },
 {
     nombre: "Camara c922",
     precio: 130000,
-    img: "./imgs/camara.png",
+    img: "../imgs/camara.png",
 }
 ]
 

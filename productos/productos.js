@@ -57,7 +57,7 @@ function pintarProductos2(productos2) {
         let sumaTotal = document.getElementById("sumaTotal");
         lista.innerHTML += `<li class="tamaño">
             Producto: ${productos2[i].nombre} - Precio: $${productos2[i].precio} (<span id="stock${i}">${productos2[i].stock}</span>)
-            <input class="comprar" type="number" id="entrada${i}" placeholder="Ingrese cantidad" min="0">
+            <input class="comprar" type="number" id="entrada${i}" placeholder="Ingrese cantidad" min="0" step="1" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
             <button class="comprar" id="btn${i}" type="button"> Comprar </button>
             Total: <p id="total${i}">  </p>
 </li>`
@@ -78,13 +78,6 @@ function comprar(i,productos2) {
     if (cantidad > 0 && cantidad <= stock) {
         stockHTML.textContent = stock - cantidad;
         entradaHTML.value = "";
-
-        alert(`Comprado exitosamente`);
-    } else {
-        alert(`No hay stock suficiente, ingrese una cantidad valida`);
-    }
-
-    if (!isNaN(cantidad) && cantidad > 0 && cantidad <= stock) {
         const multiplicacion = cantidad * productos2[i].precio;
         const totalHTML = document.getElementById(`total${i}`);
         const totalAnterior = parseFloat(totalHTML.textContent.replace('$', '')) || 0; //La función parseFloat() analiza un argumento (si es necesario, lo convierte en una cadena) y devuelve un número de coma flotante
@@ -97,9 +90,13 @@ function comprar(i,productos2) {
         }
         document.getElementById("sumaTotal").textContent = ` Total: $${totalGeneral.toFixed(2)}`;
         console.log(totalGeneral);
-    } else {
-        alert('Ingrese una cantidad válida mayor que cero.');
-    }
+    } else if (cantidad <= 0) {
+        alert('Ingrese una cantidad válida mayor que cero.');}
+
+        else {
+            alert(`No hay stock suficiente, ingrese una cantidad valida`);
+        }
+
 }
 
 for (let i = 0; i < productos2.length; i++) {
@@ -107,6 +104,8 @@ for (let i = 0; i < productos2.length; i++) {
         comprar(i,productos2);
     });
 }
+
+
 
 const cartas = [{
     nombre: "Monitor 144Hz",
